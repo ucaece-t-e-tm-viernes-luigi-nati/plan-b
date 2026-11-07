@@ -1,0 +1,15 @@
+import type { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
+  cacheComponents: true,
+  poweredByHeader: false,
+  async headers() {
+    // Las superficies internas no se indexan (además de robots.txt y metadata.robots).
+    return [
+      { source: '/empresa/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
+      { source: '/plataforma/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] },
+    ]
+  },
+}
+
+export default nextConfig

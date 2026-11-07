@@ -1,5 +1,3 @@
-'use client'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import { Accessibility, ArrowDown, ArrowRight, HeartHandshake, Lightbulb, MapPin, MoveUpRight, Sparkles, Users } from 'lucide-react'
@@ -21,7 +19,7 @@ export function AboutSection() {
             <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.17em] text-primary"><Sparkles className="size-3.5" /> La historia detrás de Planb</span>
             <h2 id="about-heading" className="mt-2 text-[34px] font-bold tracking-[-0.06em] sm:text-[44px]">Nosotros</h2>
           </div>
-          <a href="#events-heading" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground transition hover:border-primary/35 hover:text-primary"><ArrowDown className="size-4" /> Volver a los eventos</a>
+          <Link href="/#events-heading" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold text-foreground transition hover:border-primary/35 hover:text-primary"><ArrowDown className="size-4" /> Volver a los eventos</Link>
         </div>
 
         <div className="grid overflow-hidden rounded-[30px] bg-[#211639] text-white lg:grid-cols-[1.04fr_0.96fr]">
@@ -30,10 +28,10 @@ export function AboutSection() {
             <h3 className="max-w-[560px] text-[34px] font-semibold leading-[1.05] tracking-[-0.06em] sm:text-[48px]">Una ciudad llena de experiencias <span className="text-[#c6b4ff]">por descubrir.</span></h3>
             <p className="mt-5 max-w-[530px] text-sm leading-7 text-white/75 sm:text-base">Creemos que siempre hay algo nuevo por descubrir. Por eso, creamos una plataforma que reúne los mejores eventos en un solo lugar, conectando a las personas con experiencias únicas y ayudando a los organizadores a llegar a su público ideal.</p>
             <p className="mt-4 max-w-[530px] text-sm leading-7 text-white/75 sm:text-base">Queremos hacer que encontrar qué hacer sea más fácil, accesible y conectado.</p>
-            <Link href="/organizer" className="mt-7 inline-flex w-fit items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-[#211639] transition hover:bg-[#f1ebff]">Conocé Planb para locales <ArrowRight className="size-4" /></Link>
+            <Link href="/#planes" className="mt-7 inline-flex w-fit items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-semibold text-[#211639] transition hover:bg-[#f1ebff]">Conocé Plan B para locales <ArrowRight className="size-4" /></Link>
           </div>
           <div className="relative min-h-[280px] overflow-hidden sm:min-h-[360px] lg:min-h-full">
-            <Image src="/images/event-market.png" alt="Personas recorren una feria de diseño local y comparten experiencias" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
+            <Image src="/images/event-market.webp" alt="Personas recorren una feria de diseño local y comparten experiencias" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#211639]/55 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 sm:bottom-7 sm:left-7 sm:right-7">
               <p className="max-w-[260px] text-sm font-medium leading-5 text-white drop-shadow sm:text-base">Un solo lugar para encontrar eso que te hace salir.</p>

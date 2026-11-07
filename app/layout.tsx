@@ -1,15 +1,14 @@
-import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Planb — Encontrá tu próximo plan en Mar del Plata',
-    template: '%s | Planb',
+    default: 'Plan B — Encontrá tu próximo plan en Mar del Plata',
+    template: '%s | Plan B',
   },
-  description: 'Descubrí eventos y experiencias locales en Mar del Plata. Conocé Planb, nuestra misión, visión y valores, y compartí el próximo evento de tu espacio.',
-  applicationName: 'Planb',
-  generator: 'v0.app',
+  description:
+    'Descubrí eventos y experiencias locales en Mar del Plata: música, gastronomía, cultura, ferias y talleres, por barrio y por fecha.',
+  applicationName: 'Plan B',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
@@ -23,16 +22,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: '#f8f7fa',
-  userScalable: true,
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es-AR" data-scroll-behavior="smooth">
-      <body className="antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }

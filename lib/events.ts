@@ -1,104 +1,60 @@
-export type EventCategory =
-  | 'Música'
-  | 'Gastronomía'
-  | 'Cultura'
-  | 'Ferias'
-  | 'Talleres'
+// Tipos y catálogos compartidos (servidor y navegador). Los datos reales vienen de la base (lib/data/*).
 
-export type EventItem = {
-  id: string
-  title: string
-  venue: string
-  neighborhood: string
-  category: EventCategory
-  dateLabel: string
-  date: string
-  time: string
-  priceLabel: string
-  image: string
-  attendees: number
-  featured?: boolean
-  description: string
-}
+export const EVENT_CATEGORIES = ['Música', 'Gastronomía', 'Cultura', 'Ferias', 'Talleres'] as const
+export type EventCategory = (typeof EVENT_CATEGORIES)[number]
 
-export const eventCategories: Array<'Todo' | EventCategory> = [
-  'Todo',
-  'Música',
-  'Gastronomía',
-  'Cultura',
-  'Ferias',
-  'Talleres',
-]
+export const eventCategories: Array<'Todo' | EventCategory> = ['Todo', ...EVENT_CATEGORIES]
 
-export const neighborhoods = [
-  'Toda la ciudad',
+export const NEIGHBORHOODS = [
   'Güemes',
   'Centro',
   'Playa Grande',
   'Puerto',
   'Constitución',
-]
+  'La Perla',
+  'Plaza Mitre',
+  'Los Troncos',
+  'Punta Mogotes',
+  'Otro',
+] as const
 
-export const events: EventItem[] = [
-  {
-    id: 'sunset-sessions',
-    title: 'Sunset sessions: música frente al mar',
-    venue: 'Club Tri',
-    neighborhood: 'Playa Grande',
-    category: 'Música',
-    dateLabel: 'HOY · 20:30',
-    date: '2026-10-23',
-    time: '20:30',
-    priceLabel: 'Desde $4.500',
-    image: '/images/event-coast.png',
-    attendees: 128,
-    featured: true,
-    description:
-      'Una tarde larga, bandas locales y el último sol sobre el mar. Vení temprano para disfrutar la terraza.',
-  },
-  {
-    id: 'cafe-de-origen',
-    title: 'Café de origen: cata y charla',
-    venue: 'Lado B Café',
-    neighborhood: 'Güemes',
-    category: 'Gastronomía',
-    dateLabel: 'SÁB · 10:30',
-    date: '2026-10-24',
-    time: '10:30',
-    priceLabel: 'Entrada gratuita',
-    image: '/images/event-coffee.png',
-    attendees: 34,
-    description:
-      'Probá cafés de especialidad de pequeños productores y aprendé a reconocer sus notas.',
-  },
-  {
-    id: 'feria-entremares',
-    title: 'Entremares: feria de diseño local',
-    venue: 'Casa Mero',
-    neighborhood: 'Centro',
-    category: 'Ferias',
-    dateLabel: 'SÁB · 16:00',
-    date: '2026-10-24',
-    time: '16:00',
-    priceLabel: 'Entrada gratuita',
-    image: '/images/event-market.png',
-    attendees: 86,
-    description:
-      'Diseño independiente, cerámica, ilustración y proyectos hechos en Mar del Plata.',
-  },
-  {
-    id: 'impro-a-la-carta',
-    title: 'Impro a la carta',
-    venue: 'El Galpón de las Artes',
-    neighborhood: 'Puerto',
-    category: 'Cultura',
-    dateLabel: 'SÁB · 21:00',
-    date: '2026-10-24',
-    time: '21:00',
-    priceLabel: 'Desde $6.000',
-    image: '/images/event-theatre.png',
-    attendees: 57,
-    description:
-      'Una noche de teatro improvisado donde el público elige qué pasa en escena.',
-  },
-]
+export const ALL_CITY = 'Toda la ciudad'
+
+export const VENUE_TYPES = [
+  { id: 'bar', label: 'Bar' },
+  { id: 'cafe', label: 'Café' },
+  { id: 'centro_cultural', label: 'Centro cultural' },
+  { id: 'club', label: 'Club' },
+  { id: 'feria', label: 'Feria' },
+  { id: 'otro', label: 'Otro' },
+] as const
+
+export function venueTypeLabel(id: string | null | undefined) {
+  return VENUE_TYPES.find((type) => type.id === id)?.label ?? 'Otro'
+}
+
+/** Imágenes de stock incluidas en el proyecto, para elegir al crear un evento. */
+export const STOCK_IMAGES = [
+  { url: '/images/event-coast.webp', label: 'Costa / música' },
+  { url: '/images/event-coffee.webp', label: 'Café / gastronomía' },
+  { url: '/images/event-market.webp', label: 'Feria / diseño' },
+  { url: '/images/event-theatre.webp', label: 'Teatro / cultura' },
+] as const
+
+export const DEFAULT_IMAGE = '/images/event-market.webp'
+
+/** Evento tal como lo ve el público. Fechas ya resueltas en hora de Argentina. */
+export type PublicEvent = {
+  id: string
+  title: string
+  description: string
+  category: EventCategory
+  venue: string
+  neighborhood: string
+  dayKey: string // YYYY-MM-DD (hora de Argentina)
+  time: string // HH:MM
+  priceLabel: string
+  image: string
+  interested: number
+  isInterested: boolean
+}

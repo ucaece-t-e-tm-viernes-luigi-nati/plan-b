@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { contactHref } from '@/lib/site'
 import { ArrowRight, BadgeCheck, ChartNoAxesCombined, Megaphone, Sparkles, Ticket, UsersRound } from 'lucide-react'
 
 const plans = [
@@ -61,9 +61,9 @@ export function MerchantPlans() {
                   </li>
                 ))}
               </ul>
-              <Link href="/organizer" className={`mt-5 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition ${plan.featured ? 'bg-white text-[#211639] hover:bg-[#eee8fb]' : 'border border-border bg-white text-[#211639] hover:border-[#b9a5e9] hover:bg-[#f7f4fc]'}`}>
-                Conocer el panel <ArrowRight className="size-4" />
-              </Link>
+              <a href={contactHref(`Quiero sumar mi local a Plan B (plan ${plan.name})`)} target="_blank" rel="noopener noreferrer" className={`mt-5 inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition ${plan.featured ? 'bg-white text-[#211639] hover:bg-[#eee8fb]' : 'border border-border bg-white text-[#211639] hover:border-[#b9a5e9] hover:bg-[#f7f4fc]'}`}>
+                Quiero sumar mi local <ArrowRight className="size-4" aria-hidden="true" />
+              </a>
             </article>
           ))}
         </div>
@@ -81,7 +81,7 @@ export function MerchantPlans() {
 
         <div className="mt-4 flex items-start gap-3 rounded-2xl border border-[#e4d9fb] bg-[#f5f1fd] px-4 py-3.5 sm:items-center sm:px-5">
           <ChartNoAxesCombined className="mt-0.5 size-4 shrink-0 text-[#6948b9] sm:mt-0" aria-hidden="true" />
-          <p className="text-xs leading-5 text-[#51426f]"><strong className="font-semibold text-[#2c1d50]">Hipótesis comercial:</strong> los planes y precios son una propuesta inicial para validar con comercios locales. No son tarifas vigentes ni generan cobros desde esta demo.</p>
+          <p className="text-xs leading-5 text-[#51426f]"><strong className="font-semibold text-[#2c1d50]">Cómo sumarte:</strong> escribinos y te enviamos por mail un link personal para dar de alta tu local. Todos los planes incluyen 14 días de prueba gratis; los precios son en dólares por mes. Descubrir planes sigue siendo gratis para el público.</p>
         </div>
       </div>
     </section>
