@@ -1,0 +1,37 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { ActionForm, inputClass, labelClass } from '@/components/forms'
+import { Brand } from '@/components/planb/brand'
+import { completeSuperadminSetup } from '../../auth-actions'
+
+export const metadata: Metadata = { title: 'Definir contraseña' }
+export const instant = false
+
+export default async function SetupPasswordPage({ searchParams }: PageProps<'/plataforma/ingresar/clave'>) {
+  const { token } = await searchParams
+  if (typeof token !== 'string' || !/^[A-Za-z0-9_-]{20,80}$/.test(token)) notFound()
+
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center px-5 py-16">
+      <div className="w-full max-w-sm">
+        <div className="flex justify-center">
+          <Brand href="/plataforma/ingresar" suffix="equipo" />
+        </div>
+        <div className="mt-6 rounded-[24px] border border-border bg-card p-6">
+          <h1 className="text-2xl font-bold tracking-[-0.04em]">Definí tu contraseña</h1>
+          <p className="mt-1 text-sm text-muted-foreground">Mínimo 10 caracteres.</p>
+          <ActionForm action={completeSuperadminSetup.bind(null, token)} submitLabel="Guardar e ingresar" className="mt-5 flex flex-col gap-4">
+            <label className={labelClass}>
+              Nueva contraseña
+              <input name="password" type="password" required minLength={10} autoComplete="new-password" className={inputClass} />
+            </label>
+            <label className={labelClass}>
+              Repetila
+              <input name="confirm" type="password" required minLength={10} autoComplete="new-password" className={inputClass} />
+            </label>
+          </ActionForm>
+        </div>
+      </div>
+    </main>
+  )
+}
