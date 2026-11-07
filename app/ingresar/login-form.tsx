@@ -1,5 +1,6 @@
 'use client'
 
+import { PasswordInput } from '@/components/password-input'
 import { useState, type FormEvent } from 'react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -56,9 +57,8 @@ export function PublicLoginForm() {
       </label>
       <label className={labelClass}>
         Contraseña
-        <input
+        <PasswordInput
           name="password"
-          type="password"
           required
           minLength={8}
           autoComplete={register ? 'new-password' : 'current-password'}

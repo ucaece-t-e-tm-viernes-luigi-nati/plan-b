@@ -1,3 +1,4 @@
+import { PasswordInput } from '@/components/password-input'
 import type { Metadata } from 'next'
 import { ActionForm, inputClass, labelClass } from '@/components/forms'
 import { Brand } from '@/components/planb/brand'
@@ -23,7 +24,7 @@ export default function VenueLoginPage() {
             </label>
             <label className={labelClass}>
               Contraseña
-              <input name="password" type="password" required autoComplete="current-password" className={inputClass} />
+              <PasswordInput name="password" required autoComplete="current-password" className={inputClass} />
             </label>
           </ActionForm>
         </div>

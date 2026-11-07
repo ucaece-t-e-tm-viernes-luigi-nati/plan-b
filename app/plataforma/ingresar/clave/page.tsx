@@ -1,3 +1,4 @@
+import { PasswordInput } from '@/components/password-input'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ActionForm, inputClass, labelClass } from '@/components/forms'
@@ -23,11 +24,11 @@ export default async function SetupPasswordPage({ searchParams }: PageProps<'/pl
           <ActionForm action={completeSuperadminSetup.bind(null, token)} submitLabel="Guardar e ingresar" className="mt-5 flex flex-col gap-4">
             <label className={labelClass}>
               Nueva contraseña
-              <input name="password" type="password" required minLength={10} autoComplete="new-password" className={inputClass} />
+              <PasswordInput name="password" required minLength={10} autoComplete="new-password" className={inputClass} />
             </label>
             <label className={labelClass}>
               Repetila
-              <input name="confirm" type="password" required minLength={10} autoComplete="new-password" className={inputClass} />
+              <PasswordInput name="confirm" required minLength={10} autoComplete="new-password" className={inputClass} />
             </label>
           </ActionForm>
         </div>
