@@ -4,6 +4,9 @@
 
 MVP del Taller Emprendedor — Universidad CAECE, Mar del Plata (comisión viernes, 2.º cuatrimestre 2026).
 
+- **App publicada:** https://planb-lat.vercel.app
+- **Landing del curso:** https://ucaece-t-e-tm-viernes-luigi-nati.github.io/landing/
+
 ## Modelo (B2B2C)
 
 | Quién | Qué hace | Paga |
